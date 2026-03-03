@@ -13,23 +13,20 @@ fun main() {
   val textToCheck2: String? = valueToCheck2 ?: "Элемент не найден"
   println(" Searh result negative - $textToCheck2")
   //task3
-  val serverResponse: Any = arrayOf("error",404)
+  val serverResponse: Any = arrayOf("error","sdfs")
   // так как тип Эни то не могу взять элемент из массива
   /** И чего с этим будем делать? Не работает же код*/
-  val firstElement  = serverResponse.get(1)
-  if (firstElement is Int ) {
-      /** Вроде про второй элемент в задаче, и старайся в выводе работаьт с одним языком, а то где=то по русски, где-то нет */
-      println("First element is number -  $firstElement" )
-  }  else {
-      print("Unknown error code")
+  if (serverResponse is Array<*>) {
+    val typeCheck = serverResponse.get(1) as? Int
+    if (typeCheck is Int) {
+      println("Error Code -  $typeCheck")
+    } else {
+      println("UnknownError")
+    }
   }
   }
 /** Что ниже за закоментированный код? Если не нужен, удаляй */
-/* val firstElement = serverResponse.getOrNull[1]
-
- val Test1: Int? = serverResponse[1] as? Int
- val result = safeCast ?: "Okay"
- println(result)*/
+// удалил код
 // task1
 fun simulateElementSearch(searchid: Int): String? {
 /** Форматирование if может быть двух видов, либо все в одну строку, если умещается в договоренности (обычто 120 ил 150 символов)
@@ -42,6 +39,6 @@ fun simulateElementSearch(searchid: Int): String? {
 *  
 * return if (searchid > 0) "Element is correct $searchid" else null
 */
-return if (searchid > 0) "Element is correct $searchid"
-else null
+// написал в одну строку
+return if (searchid > 0) "Element is correct $searchid" else null
 }
